@@ -24,7 +24,7 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 
 // wait until the dom content is loaded (HTML is ready)
-await page.goto("https://stage.matrixforce.tech/", {
+await page.goto("https://matrixforce.tech/", {
   waitUntil: "domcontentloaded",
 });
 
@@ -129,7 +129,7 @@ async function scrape() {
     if (!!isServerDown) {
       // send alert_reminder template
       console.log("popup exists, on sending reminder");
-      sendAlert("mf_bot_alert_reminder");
+      sendAlert("mf_bot_reminder");
     } else {
       // send alert template
       console.log("popup persists, on sending Alert");
@@ -139,7 +139,7 @@ async function scrape() {
     isServerDown = true;
 
     // wait for 10 minutes then checks again, if issue persists, send alert_reminder
-    await delay(20000);
+    await delay(10 * 60 * 1000);
 
     // reload the page
     await page.reload();
