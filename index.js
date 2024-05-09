@@ -13,6 +13,7 @@ const RossContact = ["84949764200"];
 // - a visible browser (`headless: false` - easier to debug because you'll see the browser in action)
 // - no default viewport (`defaultViewport: null` - website page will in full width and height)
 const browser = await puppeteer.launch({
+  executablePath: "/usr/bin/chromium-browser",
   headless: false,
   defaultViewport: null,
   ignoreHTTPSErrors: true,
