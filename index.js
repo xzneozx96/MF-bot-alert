@@ -23,7 +23,7 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 
 // wait until the dom content is loaded (HTML is ready)
-await page.goto("https://localhost:4200/", {
+await page.goto("https://stage.matrixforce.tech/", {
   waitUntil: "domcontentloaded",
 });
 
