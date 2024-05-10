@@ -94,6 +94,23 @@ const sendAlert = async (templateName = "mf_bot_alert") => {
   }
 };
 
+const autoLogin = async () => {
+  await delay(5000);
+
+  // Fill in the username and password fields
+  await page.type(
+    'input[formcontrolname="Username"]',
+    "support@matrixforce.ai"
+  );
+  await page.type('input[formcontrolname="Password"]', "tuan9999");
+
+  // Submit the login form
+  await page.click('button[label="Login"]');
+
+  // Wait for navigation or for a specific element to appear indicating successful login
+  await page.waitForNavigation({ waitUntil: "networkidle0" }); // Wait for navigation to another page
+};
+
 const checkPopup = async (page) => {
   // APPROACH 1: Check for popup every 5 second for a total of 20 seconds (4 times)
   // for (let i = 0; i < 4; i++) {
@@ -148,6 +165,7 @@ async function scrape() {
     await delay(10000);
 
     // repeat the process
+    await autoLogin();
     scrape();
   } else {
     console.log("platform is working normally");
@@ -167,4 +185,5 @@ async function scrape() {
 }
 
 // Start the scraping
+await autoLogin();
 scrape();
