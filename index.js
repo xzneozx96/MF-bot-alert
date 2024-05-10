@@ -166,7 +166,6 @@ async function scrape() {
     await delay(10000);
 
     // repeat the process
-    await autoLogin();
     scrape();
   } else {
     console.log("platform is working normally");
