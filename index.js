@@ -95,7 +95,8 @@ const sendAlert = async (templateName = "mf_bot_alert") => {
 };
 
 const autoLogin = async () => {
-  await delay(5000);
+  // Wait for the username input field to appear
+  await page.waitForSelector('input[formcontrolname="Username"]');
 
   // Fill in the username and password fields
   await page.type(
